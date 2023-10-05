@@ -1,17 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { Note } from "../models";
 import { NoteCard } from "./NoteCard";
 import { NoteCreator } from "./NoteCreator";
 
 export function MyNotes() {
-    const mockNotes: Note[] = [
-        {
-            title: "Pigeon",
-            body: "I'm writing a story about a pigeon named Boyd. Well he loved to play in the leaves and eat old hotdog buns from the trash next to the hotdog stand on 9th by Lucy's go-to bodega. Lucy is Boyd's human friend. She will give him PigeonSnacks. At least, that's what she calls 'em. Boyd don't know what they are...",
-        },
-    ];
-    const [notes, setNotes] = React.useState<Note[]>(mockNotes);
+    const [notes, setNotes] = React.useState<Note[]>();
     const [showNoteCreator, setShowNoteCreator] = React.useState(false);
+    const [response, setResponse] = useState<Note[]>();
+    React.useEffect(() => {
+        fetch("http://localhost:3001/notes")
+            .then((res) => {
+                return res.json();
+            })
+            .then((res) => {
+                console.log("res", res);
+                const notes: Note[] = res.notes;
+                setNotes(notes);
+            });
+    }, []);
+
     return (
         <div
             style={{
@@ -27,19 +34,27 @@ export function MyNotes() {
                     onPostClicked={(note: Note) => {
                         console.log("my notes knows post was clicked");
 
-                        setNotes((oldNotes) => [...oldNotes, note]);
+                        setNotes((oldNotes) => {
+                            if (oldNotes) {
+                                const notes = [...oldNotes];
+                                return [...notes, note];
+                            }
+                            return [note];
+                        });
                         setShowNoteCreator(false);
                     }}
                 ></NoteCreator>
             ) : (
                 <div>
-                    {notes.map((note, key) => (
-                        <NoteCard
-                            key={key}
-                            title={note.title}
-                            body={note.body}
-                        ></NoteCard>
-                    ))}
+                    {notes
+                        ? notes.map((note, key) => (
+                              <NoteCard
+                                  key={key}
+                                  title={note.title}
+                                  body={note.body}
+                              ></NoteCard>
+                          ))
+                        : "Take your first note"}
                     <div
                         style={{
                             backgroundColor: "#e9e9e9",
