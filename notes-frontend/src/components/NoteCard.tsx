@@ -1,14 +1,25 @@
-export function NoteCard(props: { title: string; body: string }) {
+import { Note } from "../models";
+
+export function NoteCard(props: Note) {
     return (
         <div
             style={{
-                border: "1px solid black",
+                // border: "1px solid grey",
                 padding: "5px",
-                marginBottom: "5px",
+                marginBottom: "10px",
+                // borderRadius: "20px",
+                boxShadow: "0px 5px 7px grey",
+                borderRadius: "10px",
             }}
         >
-            <h1>{props.title}</h1>
-            <p>{props.body}</p>
+            <h1 className="heading-style-display-md left-align-text padded-md">
+                {props.title}
+            </h1>
+            <p style={{ padding: "0 20px" }}>{props.body}</p>
+            <p>
+                Written {props.date} for client {props.clientId}
+            </p>
+            {props.shared ? <div>Share</div> : <></>}
         </div>
     );
 }
