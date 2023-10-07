@@ -98,6 +98,7 @@ export function MyNotes() {
                             ></ClientSelector>
                         </div>
                     </div>
+                    <hr></hr>
                     {notesDisplayed
                         ? notesDisplayed.map((note, key) => (
                               <NoteCard

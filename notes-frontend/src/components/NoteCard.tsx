@@ -6,10 +6,11 @@ export function NoteCard(props: Note) {
             style={{
                 // border: "1px solid grey",
                 padding: "5px",
-                marginBottom: "10px",
+                marginBottom: "20px",
                 // borderRadius: "20px",
-                boxShadow: "0px 5px 7px grey",
+                boxShadow: "0px 5px 7px #d9d9d9",
                 borderRadius: "10px",
+                backgroundColor: "white",
             }}
         >
             <h1 className="heading-style-display-md left-align-text padded-md">

@@ -41,7 +41,7 @@ export function NoteCreator(props: { onPostClicked: () => void }) {
                 style={{
                     display: "flex",
                     flexDirection: "column",
-                    boxShadow: "0px 5px 7px grey",
+                    boxShadow: "0px 5px 7px #d9d9d9",
                     borderRadius: "10px",
                 }}
             >

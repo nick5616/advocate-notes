@@ -25,7 +25,12 @@ export function SearchBar(props: {
                 <FontAwesomeIcon icon={faMagnifyingGlass} />{" "}
                 <input
                     placeholder=""
-                    style={{ border: "none", outline: 0, marginLeft: "5px" }}
+                    style={{
+                        border: "none",
+                        outline: 0,
+                        marginLeft: "5px",
+                        backgroundColor: "inherit",
+                    }}
                     onChange={(event) =>
                         props.onSearchTextChanged(event.target.value)
                     }
