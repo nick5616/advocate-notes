@@ -2,8 +2,8 @@
 
 ## The application uses
 
-1. NEXT.js for the frontend
-2. nest.js for the backend
+1. React for the frontend
+2. NestJS for the backend
 
 ## Running Applications Locally
 
