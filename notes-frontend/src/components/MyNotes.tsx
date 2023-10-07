@@ -54,12 +54,20 @@ export function MyNotes() {
             className="text-box_container outline-green"
             style={{
                 width: "60vw",
+                backgroundColor: "#fafafa",
             }}
         >
             {showNoteCreator ? (
                 <></>
             ) : (
-                <h1 className="heading-style-display-lg text-box_header-wrapper">
+                <h1
+                    style={{
+                        width: "100%",
+                        textAlign: "left",
+                        marginBottom: 0,
+                    }}
+                    className="heading-style-display-lg"
+                >
                     My Notes
                 </h1>
             )}
@@ -80,7 +88,12 @@ export function MyNotes() {
                         }}
                     ></SearchBar>
 
-                    <div style={{ display: "flex" }}>
+                    <div
+                        style={{
+                            display: "flex",
+                            alignItems: "center",
+                        }}
+                    >
                         <div
                             style={{
                                 display: "flex",
