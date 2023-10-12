@@ -18,9 +18,11 @@ export function MyNotes() {
     console.log("clients displayed", clientsDisplayed);
     const notesDisplayed = notes
         ?.filter((note: Note) => {
-            if (note && clientsDisplayed.length === 0) {
-                return true;
-            }
+            // TODO: add a condition for global search to this if block,
+            // then create a UI control for global search (across all clients)
+            // if (note && searchText) {
+            //     return true;
+            // }
             return note && clientsDisplayed.includes(note.clientId);
         })
         .filter((note: Note) => {
@@ -51,10 +53,15 @@ export function MyNotes() {
 
     return (
         <div
-            className="text-box_container outline-green"
+            className="text-box_container outline-green app"
             style={{
                 width: "60vw",
                 backgroundColor: "#fafafa",
+
+                display: "flex",
+                alignItems: "center",
+                margin: "auto",
+                marginTop: "80px",
             }}
         >
             {showNoteCreator ? (
